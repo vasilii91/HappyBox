@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CDA897D0-1A1B-49C6-85AA-13B6CE5FDCE5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HappyBox</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C3D370DF-4F8B-4107-A590-0176B6503E4D</key>
+		<string>https://github.com/vasilii91/HappyBox.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HappyBox/HappyBox.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C3D370DF-4F8B-4107-A590-0176B6503E4D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/vasilii91/HappyBox.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C3D370DF-4F8B-4107-A590-0176B6503E4D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C3D370DF-4F8B-4107-A590-0176B6503E4D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HappyBox</string>
+		</dict>
+	</array>
+</dict>
+</plist>
