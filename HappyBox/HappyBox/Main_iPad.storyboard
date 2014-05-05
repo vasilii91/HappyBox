@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-1137" y="-262"/>
         </scene>
-        <!--View Controller-->
+        <!--Galery View Controller-->
         <scene sceneID="3CT-yn-DIt">
             <objects>
-                <viewController id="FtW-ov-KK9" sceneMemberID="viewController">
+                <viewController id="FtW-ov-KK9" customClass="GaleryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9xS-jw-s8s"/>
                         <viewControllerLayoutGuide type="bottom" id="vlM-fd-GiX"/>
@@ -32,16 +32,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZC7-YV-jul">
-                                <rect key="frame" x="-94" y="133" width="1024" height="768"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-6B-vOU">
+                                <rect key="frame" x="125" y="167" width="774" height="433"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.97645598649999998" green="0.13597349819999999" blue="0.19536662099999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="UPn-mV-8uF"/>
+                    <connections>
+                        <outlet property="imageViewTest" destination="NA2-6B-vOU" id="6IK-ar-Rfj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ys6-kj-avX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

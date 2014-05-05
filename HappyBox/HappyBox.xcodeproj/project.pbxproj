@@ -20,6 +20,8 @@
 		1080281F19181B09006BBD9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1080281D19181B09006BBD9B /* InfoPlist.strings */; };
 		1080282119181B09006BBD9B /* HappyBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1080282019181B09006BBD9B /* HappyBoxTests.m */; };
 		1080282B19181B3A006BBD9B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1080282A19181B3A006BBD9B /* Main_iPad.storyboard */; };
+		1080283119181ECC006BBD9B /* GaleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1080283019181ECC006BBD9B /* GaleryViewController.m */; };
+		1080283619181F58006BBD9B /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1080283519181F58006BBD9B /* AsyncImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		1080281E19181B09006BBD9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1080282019181B09006BBD9B /* HappyBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyBoxTests.m; sourceTree = "<group>"; };
 		1080282A19181B3A006BBD9B /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		1080282F19181ECC006BBD9B /* GaleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GaleryViewController.h; path = ViewControllers/GaleryViewController/GaleryViewController.h; sourceTree = "<group>"; };
+		1080283019181ECC006BBD9B /* GaleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GaleryViewController.m; path = ViewControllers/GaleryViewController/GaleryViewController.m; sourceTree = "<group>"; };
+		1080283419181F58006BBD9B /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		1080283519181F58006BBD9B /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +118,10 @@
 				1080280A19181B08006BBD9B /* AppDelegate.h */,
 				1080280B19181B08006BBD9B /* AppDelegate.m */,
 				1080282A19181B3A006BBD9B /* Main_iPad.storyboard */,
-				1080280D19181B08006BBD9B /* Images.xcassets */,
+				1080283219181F58006BBD9B /* libs */,
+				1080282D19181EA7006BBD9B /* ViewControllers */,
 				1080280219181B08006BBD9B /* Supporting Files */,
+				1080280D19181B08006BBD9B /* Images.xcassets */,
 			);
 			path = HappyBox;
 			sourceTree = "<group>";
@@ -145,6 +153,40 @@
 				1080281D19181B09006BBD9B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1080282D19181EA7006BBD9B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1080282E19181EAE006BBD9B /* GaleryViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1080282E19181EAE006BBD9B /* GaleryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1080282F19181ECC006BBD9B /* GaleryViewController.h */,
+				1080283019181ECC006BBD9B /* GaleryViewController.m */,
+			);
+			name = GaleryViewController;
+			sourceTree = "<group>";
+		};
+		1080283219181F58006BBD9B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				1080283319181F58006BBD9B /* AsyncImageView */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		1080283319181F58006BBD9B /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1080283419181F58006BBD9B /* AsyncImageView.h */,
+				1080283519181F58006BBD9B /* AsyncImageView.m */,
+			);
+			path = AsyncImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1080280C19181B08006BBD9B /* AppDelegate.m in Sources */,
+				1080283119181ECC006BBD9B /* GaleryViewController.m in Sources */,
 				1080280819181B08006BBD9B /* main.m in Sources */,
+				1080283619181F58006BBD9B /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
