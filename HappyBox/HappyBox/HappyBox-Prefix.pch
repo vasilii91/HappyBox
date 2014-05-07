@@ -13,4 +13,71 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "CoreView.h"
+    #import "Core/Constants.h"
 #endif
+
+
+// macroses
+
+#define APP_DELEGATE ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
+#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_5 ( IS_IPHONE && IS_WIDESCREEN )
+
+#define IS_IOS5_OR_GREATER  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0)
+#define IS_IOS6_OR_GREATER  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
+#define IS_IOS7_OR_GREATER  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+#ifndef DEBUG
+#define LOG(...)
+#else
+#define LOG(...) NSLog(__VA_ARGS__)
+#endif
+#define kSELECTED_LANGUAGE_KEY @"SELECTED_LANGUAGE_KEY"
+
+// Preferences
+#define UDValue(x)              [[NSUserDefaults standardUserDefaults] valueForKey:(x)]
+#define UDBool(x)               [[NSUserDefaults standardUserDefaults] boolForKey:(x)]
+#define UDObject(x)             [[NSUserDefaults standardUserDefaults] objectForKey:(x)]
+#define UDInteger(x)            [[NSUserDefaults standardUserDefaults] integerForKey:(x)]
+#define UDFloat(x)              [[NSUserDefaults standardUserDefaults] floatForKey:(x)]
+#define UDSetValue(x, y)        [[NSUserDefaults standardUserDefaults] setValue:(y) forKey:(x)]
+#define UDSetBool(x, y)         [[NSUserDefaults standardUserDefaults] setBool:(y) forKey:(x)]
+#define UDSetInteger(x, y)      [[NSUserDefaults standardUserDefaults] setInteger:(y) forKey:(x)]
+#define UDSetFloat(x, y)        [[NSUserDefaults standardUserDefaults] setFloat:(y) forKey:(x)]
+#define UDSetObject(x, y)       [[NSUserDefaults standardUserDefaults] setObject:(y) forKey:(x)]
+#define UDSync(ignored)         [[NSUserDefaults standardUserDefaults] synchronize]
+
+#define ViewSetX(v, x)                      v.frame = CGRectMake(x, v.frame.origin.y, v.frame.size.width, v.frame.size.height)
+#define ViewSetY(v, y)                      v.frame = CGRectMake(v.frame.origin.x, y, v.frame.size.width, v.frame.size.height)
+#define ViewWidth(v)                        v.frame.size.width
+#define ViewHeight(v)                       v.frame.size.height
+#define ViewX(v)                            v.frame.origin.x
+#define ViewY(v)                            v.frame.origin.y
+
+
+#define IPAD_HEIGHT 768
+#define IPAD_WIDTH 1024
+#define IPHONE_HEIGHT (IS_IPHONE_5 ? 568 : 480)
+#define IPHONE_WIDTH 320
+
+#define IDEVICE_HEIGHT (IS_IPHONE ? IPHONE_HEIGHT : IPAD_HEIGHT)
+#define IDEVICE_WIDTH (IS_IPHONE ? IPHONE_WIDTH : IPAD_WIDTH)
+#define IDEVICE_STATUS_BAR_HEIGHT 20
+#define IDEVICE_STATUS_BAR_DELTA (IS_IOS7_OR_GREATER ? 0 : 20)
+
+#define IDEVICE_NAV_BAR_HEIGHT 68
+
+#define UIColorFromRGBvalue(rgbValue)       [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define UIColorFromRGB(r, g, b)             [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+#define UIColorFromRGBA(r, g, b, a)         [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+// Directories
+static inline NSString *CachesDirectory() {	return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]; }
+static inline NSString *LibraryDirectory() { return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]; }
+static inline NSString *DocumentsDirectory() { return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]; }
+
+#define LOC(str) NSLocalizedString(str, nil)
