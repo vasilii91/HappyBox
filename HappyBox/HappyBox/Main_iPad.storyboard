@@ -13,41 +13,78 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="FtW-ov-KK9" kind="relationship" relationship="rootViewController" id="Cbg-sa-f0l"/>
+                        <segue destination="3vN-D9-JTK" kind="relationship" relationship="rootViewController" id="h1d-0F-iSb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ick-ux-QN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1137" y="-262"/>
+            <point key="canvasLocation" x="71" y="-254"/>
         </scene>
-        <!--Galery View Controller-->
-        <scene sceneID="3CT-yn-DIt">
+        <!--Photoroll View Controller-->
+        <scene sceneID="YG7-0U-NRV">
             <objects>
-                <viewController id="FtW-ov-KK9" customClass="GaleryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotorollVC" id="3vN-D9-JTK" customClass="PhotorollViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9xS-jw-s8s"/>
-                        <viewControllerLayoutGuide type="bottom" id="vlM-fd-GiX"/>
+                        <viewControllerLayoutGuide type="top" id="hKc-1G-g4s"/>
+                        <viewControllerLayoutGuide type="bottom" id="X84-4g-sCA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eht-oE-dKC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                    <view key="view" contentMode="scaleToFill" id="dOW-me-Cwu">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-6B-vOU">
-                                <rect key="frame" x="125" y="167" width="774" height="433"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f8i-9m-0fx">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3vN-D9-JTK" id="9Vk-mc-Sqp"/>
+                                    <outlet property="delegate" destination="3vN-D9-JTK" id="Idq-CG-6Wh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lhh-Qg-MM1"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="tableViewPhotoroll" destination="f8i-9m-0fx" id="6De-PQ-f9n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QwS-TS-ac3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="-262"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="VjK-Am-Vkf">
+            <objects>
+                <viewController storyboardIdentifier="ResultVC" id="d2z-aW-sct" customClass="ResultViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fPJ-t2-LAQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="IDx-TW-QCt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ndw-U0-Qg8">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-1h-gbp">
+                                <rect key="frame" x="171" y="0.0" width="683" height="704"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UPn-mV-8uF"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="imageViewTest" destination="NA2-6B-vOU" id="6IK-ar-Rfj"/>
+                        <outlet property="imageViewPhoto" destination="hZz-1h-gbp" id="mcA-tN-u2A"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ys6-kj-avX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3KM-36-bL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="-270"/>
+            <point key="canvasLocation" x="2454" y="-262"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

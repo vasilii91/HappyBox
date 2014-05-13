@@ -12,9 +12,7 @@
 
 @protocol PhotorollPreviewDelegate <NSObject>
 
-- (void)userSelectedImageWithIndex:(NSInteger)imageIndex;
-- (void)userDeselectedImageWithIndex:(NSInteger)imageIndex;
-- (void)userTapOnImageWithIndex:(NSInteger)imageIndex;
+- (void)userTapOnImage:(UIImage *)image;
 
 @end
 
@@ -23,15 +21,10 @@
 {
     IBOutletCollection(UIView) NSArray *containerViews;
     IBOutletCollection(UIImageView) NSArray *imageViewsImage;
-    IBOutletCollection(UIButton) NSArray *buttonsSelection;
 }
 
 @property (nonatomic, assign) NSInteger row;
-@property (nonatomic, retain) NSArray *images;
-@property (nonatomic, assign) BOOL selectionState;
+@property (nonatomic, retain) NSArray *urls;
 @property (nonatomic, assign) NSObject<PhotorollPreviewDelegate> *delegate;
-
-- (void)selectItemAtIndex:(NSInteger)index;
-- (void)deselectItemAtIndex:(NSInteger)index;
 
 @end

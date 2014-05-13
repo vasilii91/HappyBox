@@ -15,6 +15,7 @@
     #import <Foundation/Foundation.h>
     #import "CoreView.h"
     #import "Core/Constants.h"
+    #import "SVProgressHUD.h"
 #endif
 
 

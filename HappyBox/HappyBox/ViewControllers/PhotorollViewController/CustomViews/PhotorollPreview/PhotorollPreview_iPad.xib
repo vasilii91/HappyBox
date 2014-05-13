@@ -22,16 +22,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="157" height="232"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bKZ-TS-Gfa">
-                                <rect key="frame" x="116" y="188" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="capture_select_button.png"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -44,16 +34,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="157" height="232"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dKf-lr-eve">
-                                <rect key="frame" x="116" y="188" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="capture_select_button.png"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -66,16 +46,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="157" height="232"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Cj-kg-C7y">
-                                <rect key="frame" x="116" y="188" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="capture_select_button.png"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -85,9 +55,6 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outletCollection property="buttonsSelection" destination="bKZ-TS-Gfa" id="VwC-j3-4Xd"/>
-                <outletCollection property="buttonsSelection" destination="dKf-lr-eve" id="3mk-zv-eaP"/>
-                <outletCollection property="buttonsSelection" destination="5Cj-kg-C7y" id="grG-Oj-VUh"/>
                 <outletCollection property="containerViews" destination="Mxa-zI-PWI" id="Xuj-C9-VtE"/>
                 <outletCollection property="containerViews" destination="BwK-sJ-Wbt" id="y2Y-Ir-5c5"/>
                 <outletCollection property="containerViews" destination="5ZN-cw-jg0" id="8jv-28-T8p"/>
@@ -97,7 +64,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="capture_select_button.png" width="28" height="28"/>
-    </resources>
 </document>
