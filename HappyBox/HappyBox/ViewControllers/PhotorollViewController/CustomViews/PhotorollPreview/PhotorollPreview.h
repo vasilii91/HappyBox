@@ -12,7 +12,7 @@
 
 @protocol PhotorollPreviewDelegate <NSObject>
 
-- (void)userTapOnImage:(UIImage *)image;
+- (void)userTapOnPhotoWithIndex:(NSInteger)index;
 
 @end
 
@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic, assign) NSInteger row;
-@property (nonatomic, retain) NSArray *urls;
+@property (nonatomic, retain) NSArray *photos;
 @property (nonatomic, assign) NSObject<PhotorollPreviewDelegate> *delegate;
 
 @end

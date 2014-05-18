@@ -28,4 +28,8 @@
 
 + (NSString *)addItem:(id)item toDirectoryWithPathComponents:(NSArray *)directoryPathComponents;
 
+
++ (UIImage *)photoByPhotoName:(NSString *)photoName isFullsize:(BOOL)isFullsize;
++ (NSString *)escapeString:(NSString *)stringToEscape;
+
 @end

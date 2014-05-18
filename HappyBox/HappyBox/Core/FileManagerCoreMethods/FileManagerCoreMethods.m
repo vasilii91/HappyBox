@@ -11,6 +11,7 @@
 #import "FileManagerObject.h"
 #import "UIImage+Resizing.h"
 #import "UserSettings.h"
+#import "BSImageCache.h"
 
 @implementation FileManagerCoreMethods
 
@@ -203,11 +204,56 @@
     NSData *dataToWrite = UIImageJPEGRepresentation((UIImage *)item, 1.0);
     
     NSString *path = [FileManagerCoreMethods pathFromPathComponents:directoryPathComponents];
-    [dataToWrite writeToFile:path atomically:YES];
-    //***** add image or video (finish) ****
+    
+    NSError *error;
+    BOOL success = [dataToWrite writeToFile:path options:0 error:&error];
+    if (!success) {
+        NSLog(@"writeToFile failed with error %@", error);
+    }
     
     return path;
 }
 
++ (UIImage *)photoByPhotoName:(NSString *)photoName isFullsize:(BOOL)isFullsize
+{
+    photoName = [self escapeString:photoName];
+    
+    UIImage *photo = nil;
+    if (isFullsize) {
+        NSArray *pathComponents = @[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
+                                    DIRECTORY_NAME_FULLSIZE_PHOTOS,
+                                    photoName];
+        NSString *path = [self pathFromPathComponents:pathComponents];
+        photo = [UIImage imageWithContentsOfFile:path];
+    }
+    else {
+        photo = [[BSImageCache sharedInstance] getCachedImageFromId:photoName cacheType:CacheTypeIsRAM];
+        
+        if (photo == nil) {
+            NSArray *pathComponents = @[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
+                                        DIRECTORY_NAME_PREVIEW_PHOTOS,
+                                        photoName];
+            NSString *path = [self pathFromPathComponents:pathComponents];
+            photo = [UIImage imageWithContentsOfFile:path];
+            
+            if (photo) {
+                [[BSImageCache sharedInstance] cacheImage:photo withId:photoName cacheType:CacheTypeIsRAM];
+            }
+        }
+    }
+
+    return photo;
+}
+
++ (NSString *)escapeString:(NSString *)stringToEscape
+{
+    NSString *escapedString = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                        (__bridge CFStringRef)stringToEscape,
+                                                                                        NULL,
+                                                                                        CFSTR("!*'();:@&=+$,/?%#[]\""),
+                                                                                        kCFStringEncodingUTF8));
+    
+    return escapedString;
+}
 
 @end

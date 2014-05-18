@@ -20,6 +20,8 @@
     
     PhotorollNavBar *photorollNavBar;
     PhotorollToolbar *photorollToolBar;
+    
+    NSArray *listOfPhotos;
 }
 
 @property (nonatomic, retain) NSArray *photoURLs;

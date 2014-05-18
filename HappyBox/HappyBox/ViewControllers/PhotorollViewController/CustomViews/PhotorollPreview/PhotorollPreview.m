@@ -7,25 +7,24 @@
 //
 
 #import "PhotorollPreview.h"
-#import "AsyncImageView.h"
 
 @implementation PhotorollPreview
 
 
 #pragma mark - Private methods
 
-- (void)setUrls:(NSArray *)urls
+- (void)setPhotos:(NSArray *)photos
 {
     for (UIView *containerView in containerViews) {
         containerView.hidden = YES;
     }
     
-    for (int i = 0; i < [urls count]; i++) {
+    for (int i = 0; i < [photos count]; i++) {
         
         UIView *containerView = containerViews[i];
         containerView.hidden = NO;
         UIImageView *imageView = imageViewsImage[i];
-        imageView.imageURL = urls[i];
+        imageView.image = photos[i];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                        initWithTarget:self
@@ -41,11 +40,10 @@
 {
     UIView *containerView = gr.view;
     NSInteger containerTag = containerView.tag;
-    NSInteger index = containerTag + self.row * 3;
+    NSInteger index = containerTag + self.row * 5;
     LOG(@"%d", index);
     
-    UIImageView *imageView = imageViewsImage[containerTag];
-    [self.delegate userTapOnImage:imageView.image];
+    [self.delegate userTapOnPhotoWithIndex:index];
 }
 
 @end
