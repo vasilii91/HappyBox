@@ -24,4 +24,12 @@
     imageViewPhoto.image = self.photo;
 }
 
+
+#pragma mark - Actions
+
+- (IBAction)clickOnBackButton:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

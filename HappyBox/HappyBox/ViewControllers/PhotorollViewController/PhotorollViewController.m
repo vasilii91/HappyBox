@@ -54,6 +54,8 @@
     
     NSString *postfix = IS_IPAD ? @"iPad" : @"iPhone";
     [tableViewPhotoroll registerNib:[UINib nibWithNibName:[NSString stringWithFormat:@"PhotorollPreview_%@", postfix] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:PHOTOROLL_PREVIEW_CELL_ID];
+    
+    [tableViewPhotoroll setContentInset:UIEdgeInsetsMake(30, 0, 0, 0)];
 }
 
 
