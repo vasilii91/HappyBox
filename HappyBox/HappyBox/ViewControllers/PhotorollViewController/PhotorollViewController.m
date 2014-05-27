@@ -18,7 +18,7 @@
 #import "ResultViewController.h"
 #import "AsyncImageView.h"
 #import "HFSManager.h"
-#import "UIImageView+WebCache.h"
+#import "SDWebImageManager.h"
 #import "UIImage+Resize.h"
 #import "BSImageCache.h"
 

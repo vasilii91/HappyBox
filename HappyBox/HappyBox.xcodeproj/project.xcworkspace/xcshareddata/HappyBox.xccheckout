@@ -17,6 +17,8 @@
 	<string>HappyBox/HappyBox.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>AAC11DD3-64B5-4E89-948B-9138F12C0AEE</key>
+		<string>../../HappyBox/libs/ShareKit</string>
 		<key>C3D370DF-4F8B-4107-A590-0176B6503E4D</key>
 		<string>../../..</string>
 	</dict>

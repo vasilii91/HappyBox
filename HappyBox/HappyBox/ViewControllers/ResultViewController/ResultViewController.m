@@ -7,6 +7,9 @@
 //
 
 #import "ResultViewController.h"
+#import "SHKVkontakte.h"
+#import "SHKItem.h"
+
 
 @interface ResultViewController ()
 
@@ -30,6 +33,19 @@
 - (IBAction)clickOnBackButton:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)clickOnActionButton:(UIButton *)sender
+{
+    NSInteger tag = sender.tag;
+
+    SHKItem *item = [SHKItem new];
+    item.shareType = SHKShareTypeImage;
+    item.image = self.photo;
+    
+    [SHKVkontakte shareItem:item];
+    
+    [SHKVkontakte logout];
 }
 
 @end

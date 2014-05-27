@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHKSharer.h"
 
-@interface ResultViewController : UIViewController
+@interface ResultViewController : UIViewController<SHKSharerDelegate>
 {
     __weak IBOutlet UIImageView *imageViewPhoto;
 }
