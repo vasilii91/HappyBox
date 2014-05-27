@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		101CCBDE1935274500827C9B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101CCBDD1935274500827C9B /* FacebookSDK.framework */; };
 		101CCCA2193529D500827C9B /* libShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 101CCC3F193529A600827C9B /* libShareKit.a */; };
+		101CCCD21935363E00827C9B /* SHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 101CCCD11935363E00827C9B /* SHKConfigurator.m */; };
+		101CCCD5193538EF00827C9B /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 101CCC41193529A600827C9B /* ShareKit.bundle */; };
 		10638E281922905600C2181F /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10638E271922905600C2181F /* ResultViewController.m */; };
 		10638E2D1923F7BC00C2181F /* person-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10638E2B1923F7BC00C2181F /* person-icon.png */; };
 		10638E2E1923F7BC00C2181F /* person-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10638E2C1923F7BC00C2181F /* person-icon@2x.png */; };
@@ -284,6 +286,8 @@
 /* Begin PBXFileReference section */
 		101CCBDD1935274500827C9B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = HappyBox/libs/ShareKit/Submodules/ShareKit/Frameworks/FacebookSDK.framework; sourceTree = "<group>"; };
 		101CCC0B193529A300827C9B /* ShareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShareKit.xcodeproj; path = ShareKit/Submodules/ShareKit/ShareKit.xcodeproj; sourceTree = "<group>"; };
+		101CCCD01935363E00827C9B /* SHKConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKConfigurator.h; sourceTree = "<group>"; };
+		101CCCD11935363E00827C9B /* SHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKConfigurator.m; sourceTree = "<group>"; };
 		10638E261922905600C2181F /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultViewController.h; path = ViewControllers/ResultViewController/ResultViewController.h; sourceTree = "<group>"; };
 		10638E271922905600C2181F /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultViewController.m; path = ViewControllers/ResultViewController/ResultViewController.m; sourceTree = "<group>"; };
 		10638E2B1923F7BC00C2181F /* person-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person-icon.png"; sourceTree = "<group>"; };
@@ -479,6 +483,15 @@
 				101CCC99193529A600827C9B /* libSDWebImage.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		101CCCCF1935363E00827C9B /* SHKConfigurator */ = {
+			isa = PBXGroup;
+			children = (
+				101CCCD01935363E00827C9B /* SHKConfigurator.h */,
+				101CCCD11935363E00827C9B /* SHKConfigurator.m */,
+			);
+			path = SHKConfigurator;
 			sourceTree = "<group>";
 		};
 		10638E251922903300C2181F /* ResultViewController */ = {
@@ -742,6 +755,7 @@
 				10802976191A99F9006BBD9B /* Extensions */,
 				1080296F191A99D9006BBD9B /* FileManagerCoreMethods */,
 				108B64F31922810700CAC089 /* HFSManager */,
+				101CCCCF1935363E00827C9B /* SHKConfigurator */,
 				10802986191A9A3D006BBD9B /* UserSettings */,
 			);
 			path = Core;
@@ -1127,6 +1141,7 @@
 				1080280E19181B08006BBD9B /* Images.xcassets in Resources */,
 				10802903191A983E006BBD9B /* PhotorollNavBar_iPad.xib in Resources */,
 				10A24A691935150000EBBA2C /* fb_button_highlighted.png in Resources */,
+				101CCCD5193538EF00827C9B /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1080280C19181B08006BBD9B /* AppDelegate.m in Sources */,
+				101CCCD21935363E00827C9B /* SHKConfigurator.m in Sources */,
 				10802975191A99D9006BBD9B /* FileManagerObject.m in Sources */,
 				10802984191A9A20006BBD9B /* UIImage+fixOrientation.m in Sources */,
 				10802989191A9A3D006BBD9B /* UserSettings.m in Sources */,

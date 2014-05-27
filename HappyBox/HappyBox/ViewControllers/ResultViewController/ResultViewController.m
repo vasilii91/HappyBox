@@ -9,7 +9,7 @@
 #import "ResultViewController.h"
 #import "SHKVkontakte.h"
 #import "SHKItem.h"
-
+#import "SHKFacebook.h"
 
 @interface ResultViewController ()
 
@@ -43,9 +43,9 @@
     item.shareType = SHKShareTypeImage;
     item.image = self.photo;
     
-    [SHKVkontakte shareItem:item];
+    [SHKFacebook shareItem:item];
     
-    [SHKVkontakte logout];
+//    [SHKFacebook logout];
 }
 
 @end

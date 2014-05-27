@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "FileManagerCoreMethods.h"
-
+#import "DefaultSHKConfigurator.h"
+#import "SHKConfigurator.h"
+#import "SHKConfiguration.h"
 
 @implementation AppDelegate
 
@@ -18,6 +20,9 @@
 //    // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    [self.window makeKeyAndVisible];
+    
+    DefaultSHKConfigurator *configurator = [SHKConfigurator new];
+    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
     
     [FileManagerCoreMethods createNewDirectoryWithPathComponents:@[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
                                                                    DIRECTORY_NAME_FULLSIZE_PHOTOS]];
