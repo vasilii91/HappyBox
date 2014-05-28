@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SHKSharer.h"
 
+enum
+{
+    ButtonShareTypePrint,
+    ButtonShareTypeVk,
+    ButtonShareTypeFacebook,
+    ButtonShareTypeEmail
+};
+typedef NSInteger ButtonShareType;
+
+
 @interface ResultViewController : UIViewController<SHKSharerDelegate>
 {
     __weak IBOutlet UIImageView *imageViewPhoto;

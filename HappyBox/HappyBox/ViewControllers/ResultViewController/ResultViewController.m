@@ -10,8 +10,14 @@
 #import "SHKVkontakte.h"
 #import "SHKItem.h"
 #import "SHKFacebook.h"
+#import "SHKMail.h"
 
 @interface ResultViewController ()
+{
+    SHKMail *shkMail;
+    SHKVkontakte *shkVkontakte;
+    SHKFacebook *shkFacebook;
+}
 
 @end
 
@@ -25,6 +31,14 @@
     [super viewDidLoad];
 
     imageViewPhoto.image = self.photo;
+    
+    shkMail = [[SHKMail alloc] init];
+    shkFacebook = [[SHKFacebook alloc] init];
+    shkVkontakte = [[SHKVkontakte alloc] init];
+    
+    shkMail.shareDelegate = self;
+    shkFacebook.shareDelegate = self;
+    shkVkontakte.shareDelegate = self;
 }
 
 
@@ -43,9 +57,50 @@
     item.shareType = SHKShareTypeImage;
     item.image = self.photo;
     
-    [SHKFacebook shareItem:item];
-    
-//    [SHKFacebook logout];
+    switch (tag) {
+        case ButtonShareTypeEmail:
+        {
+            [shkMail loadItem:item];
+            [shkMail share];
+        } break;
+        case ButtonShareTypePrint:
+        {
+            [SHKVkontakte logout];
+        } break;
+        case ButtonShareTypeVk:
+        {
+            [shkVkontakte loadItem:item];
+            [shkVkontakte share];
+        } break;
+        case ButtonShareTypeFacebook:
+        {
+//            [shkFacebook loadItem:item];
+            [SHKFacebook shareItem:item];
+        } break;
+    }
+}
+
+
+#pragma mark - @protocol SHKSharerDelegate <NSObject>
+
+- (void)sharerStartedSending:(SHKSharer *)sharer
+{
+    LOG(@"1");
+}
+
+- (void)sharerFinishedSending:(SHKSharer *)sharer
+{
+    LOG(@"2");
+}
+
+- (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
+{
+    LOG(@"3");
+}
+
+- (void)sharerCancelledSending:(SHKSharer *)sharer
+{
+    LOG(@"4");
 }
 
 @end
