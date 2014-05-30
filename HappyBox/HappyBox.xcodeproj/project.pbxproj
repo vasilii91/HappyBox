@@ -103,6 +103,12 @@
 		10EDB7031927942B0044E041 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB6FE1927942B0044E041 /* UIImage+RoundedCorner.m */; };
 		10EDB7041927942B0044E041 /* UIImage+Scaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB7001927942B0044E041 /* UIImage+Scaling.m */; };
 		10EDB70919281EBE0044E041 /* BSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB70819281EBE0044E041 /* BSImageCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BED263A61938C38000325966 /* background_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A01938C38000325966 /* background_1.png */; };
+		BED263A71938C38000325966 /* background_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A11938C38000325966 /* background_1@2x.png */; };
+		BED263A81938C38000325966 /* background_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A21938C38000325966 /* background_2.png */; };
+		BED263A91938C38000325966 /* background_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A31938C38000325966 /* background_2@2x.png */; };
+		BED263AA1938C38000325966 /* top_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A41938C38000325966 /* top_bar.png */; };
+		BED263AB1938C38000325966 /* top_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A51938C38000325966 /* top_bar@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,6 +412,12 @@
 		10EDB7001927942B0044E041 /* UIImage+Scaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scaling.m"; sourceTree = "<group>"; };
 		10EDB70719281EBE0044E041 /* BSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSImageCache.h; sourceTree = "<group>"; };
 		10EDB70819281EBE0044E041 /* BSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSImageCache.m; sourceTree = "<group>"; };
+		BED263A01938C38000325966 /* background_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_1.png; sourceTree = "<group>"; };
+		BED263A11938C38000325966 /* background_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_1@2x.png"; sourceTree = "<group>"; };
+		BED263A21938C38000325966 /* background_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_2.png; sourceTree = "<group>"; };
+		BED263A31938C38000325966 /* background_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_2@2x.png"; sourceTree = "<group>"; };
+		BED263A41938C38000325966 /* top_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bar.png; sourceTree = "<group>"; };
+		BED263A51938C38000325966 /* top_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_bar@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +526,12 @@
 		10638E2A1923F7BC00C2181F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				BED263A01938C38000325966 /* background_1.png */,
+				BED263A11938C38000325966 /* background_1@2x.png */,
+				BED263A21938C38000325966 /* background_2.png */,
+				BED263A31938C38000325966 /* background_2@2x.png */,
+				BED263A41938C38000325966 /* top_bar.png */,
+				BED263A51938C38000325966 /* top_bar@2x.png */,
 				10A24A431935150000EBBA2C /* back_button_highlighted.png */,
 				10A24A441935150000EBBA2C /* back_button_highlighted@2x.png */,
 				10A24A451935150000EBBA2C /* back_button_normal.png */,
@@ -1102,14 +1120,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED263A81938C38000325966 /* background_2.png in Resources */,
 				10A24A701935150000EBBA2C /* photo_background_small@2x.png in Resources */,
 				10A24A651935150000EBBA2C /* email_button_highlighted.png in Resources */,
 				10A24A6C1935150000EBBA2C /* fb_button_normal@2x.png in Resources */,
 				10A24A7A1935150000EBBA2C /* vk_button_normal@2x.png in Resources */,
 				10802906191A983E006BBD9B /* PhotorollPreview_iPad.xib in Resources */,
+				BED263AB1938C38000325966 /* top_bar@2x.png in Resources */,
 				10A24A6D1935150000EBBA2C /* happy_box_logo.png in Resources */,
 				10A24A631935150000EBBA2C /* background.png in Resources */,
 				1080282B19181B3A006BBD9B /* Main_iPad.storyboard in Resources */,
+				BED263A71938C38000325966 /* background_1@2x.png in Resources */,
 				10A24A5F1935150000EBBA2C /* back_button_highlighted.png in Resources */,
 				10A24A611935150000EBBA2C /* back_button_normal.png in Resources */,
 				10A24A741935150000EBBA2C /* pring_button_highlighted@2x.png in Resources */,
@@ -1133,9 +1154,12 @@
 				1080290A191A983E006BBD9B /* PhotorollToolbar_iPhone.xib in Resources */,
 				1080298E191A9A9E006BBD9B /* SVProgressHUD.bundle in Resources */,
 				10A24A641935150000EBBA2C /* background@2x.png in Resources */,
+				BED263AA1938C38000325966 /* top_bar.png in Resources */,
 				10A24A6B1935150000EBBA2C /* fb_button_normal.png in Resources */,
+				BED263A61938C38000325966 /* background_1.png in Resources */,
 				10802909191A983E006BBD9B /* PhotorollToolbar_iPad.xib in Resources */,
 				10638E2E1923F7BC00C2181F /* person-icon@2x.png in Resources */,
+				BED263A91938C38000325966 /* background_2@2x.png in Resources */,
 				10A24A6E1935150000EBBA2C /* happy_box_logo@2x.png in Resources */,
 				10A24A751935150000EBBA2C /* print_button_normal.png in Resources */,
 				1080280E19181B08006BBD9B /* Images.xcassets in Resources */,
