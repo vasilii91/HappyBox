@@ -22,6 +22,8 @@ typedef NSInteger ButtonShareType;
 @interface ResultViewController : UIViewController<SHKSharerDelegate>
 {
     __weak IBOutlet UIImageView *imageViewPhoto;
+    __weak IBOutlet UIView *viewContainer;
+    IBOutletCollection(UIView) NSArray *viewsForButtons;
 }
 
 @property (nonatomic, retain) UIImage *photo;

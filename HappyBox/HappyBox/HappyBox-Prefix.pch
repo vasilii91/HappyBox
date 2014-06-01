@@ -39,6 +39,8 @@
 #endif
 #define kSELECTED_LANGUAGE_KEY @"SELECTED_LANGUAGE_KEY"
 
+#define LOGAlert(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show];}
+
 // Preferences
 #define UDValue(x)              [[NSUserDefaults standardUserDefaults] valueForKey:(x)]
 #define UDBool(x)               [[NSUserDefaults standardUserDefaults] boolForKey:(x)]
