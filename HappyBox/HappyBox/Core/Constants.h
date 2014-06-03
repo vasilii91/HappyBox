@@ -18,3 +18,12 @@
 #define DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS @"HappyBoxPhotos"
 #define DIRECTORY_NAME_PREVIEW_PHOTOS @"preview"
 #define DIRECTORY_NAME_FULLSIZE_PHOTOS @"fullsize"
+
+
+#define SETTINGS_SERVER_ADDRESS @"server_address"
+#define SETTINGS_FOLDER_NAME @"folder_name"
+#define SETTINGS_PRINT_ENABLED @"print_enabled"
+#define SETTINGS_EMAIL_ENABLED @"email_enabled"
+#define SETTINGS_VK_ENABLED @"vk_enabled"
+#define SETTINGS_FACEBOOK_ENABLED @"facebook_enabled"
+#define SETTINGS_STATISTICS_PASSWORD @"statistics_password"

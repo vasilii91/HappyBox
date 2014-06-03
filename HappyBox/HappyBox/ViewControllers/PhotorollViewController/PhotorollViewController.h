@@ -13,10 +13,11 @@
 @class PhotorollNavBar, PhotorollToolbar;
 
 
-@interface PhotorollViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, PhotorollPreviewDelegate>
+@interface PhotorollViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, PhotorollPreviewDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UITableView *tableViewPhotoroll;
     __weak IBOutlet UILabel *labelTitle;
+    __weak IBOutlet UIButton *buttonStatistics;
     
     PhotorollNavBar *photorollNavBar;
     PhotorollToolbar *photorollToolBar;

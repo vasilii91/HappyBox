@@ -13,6 +13,8 @@
 #import "SHKMail.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "AFNetworking.h"
+#import "StatisticsManager.h"
+
 
 @interface ResultViewController ()
 {
@@ -35,7 +37,11 @@
     for (UIView *v in viewsForButtons) {
         v.backgroundColor = [UIColor clearColor];
     }
-
+    buttonPrint.hidden = YES;
+    buttonFacebook.hidden = YES;
+    buttonVK.hidden = YES;
+    buttonEmail.hidden = YES;
+    
     imageViewPhoto.image = self.photo;
     
     shkMail = [[SHKMail alloc] init];
@@ -50,8 +56,53 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[FBSession activeSession] closeAndClearTokenInformation];
+    [SHKVkontakte logout];
     
-    LOG(@"%@", UDValue(@"server_address"));
+    [self buildButtons];
+}
+
+- (void)buildButtons
+{
+    NSInteger countOfActive = 0;
+    NSInteger activeIndex = 0;
+    
+    if (UDBool(SETTINGS_EMAIL_ENABLED)) {
+        countOfActive++;
+        buttonPrint.frame = [viewsForButtons[activeIndex] frame];
+        buttonPrint.hidden = NO;
+        activeIndex++;
+    }
+    if (UDBool(SETTINGS_VK_ENABLED)) {
+        countOfActive++;
+        buttonVK.frame = [viewsForButtons[activeIndex] frame];
+        buttonVK.hidden = NO;
+        activeIndex++;
+    }
+    if (UDBool(SETTINGS_FACEBOOK_ENABLED)) {
+        countOfActive++;
+        buttonFacebook.frame = [viewsForButtons[activeIndex] frame];
+        buttonFacebook.hidden = NO;
+        activeIndex++;
+    }
+    
+    if (UDBool(SETTINGS_EMAIL_ENABLED)) {
+        countOfActive++;
+        buttonEmail.frame = [viewsForButtons[activeIndex] frame];
+        buttonEmail.hidden = NO;
+        activeIndex++;
+    }
+    
+    UIView *firstContainer = viewsForButtons[0];
+    UIView *lastContainer = viewsForButtons[countOfActive - 1];
+    
+    CGFloat containerHeight = ViewY(firstContainer) + ViewY(lastContainer) + ViewHeight(lastContainer);
+    viewContainer.frame = CGRectMake(ViewX(viewContainer),
+                                     ViewY(viewContainer),
+                                     ViewWidth(viewContainer),
+                                     containerHeight);
+    
+    viewContainer.center = viewBigContainer.center;
 }
 
 
@@ -78,9 +129,7 @@
         } break;
         case ButtonShareTypePrint:
         {
-            [[FBSession activeSession] closeAndClearTokenInformation];
-            [SHKVkontakte logout];
-            
+            [StatisticsManager increaseCountForKey:PRINT_COUNT];
             [self printPhotoWithName:@"print.JPG"];
         } break;
         case ButtonShareTypeVk:
@@ -100,22 +149,48 @@
 
 - (void)sharerStartedSending:(SHKSharer *)sharer
 {
+    if ([sharer isKindOfClass:[SHKFacebook class]]) {
+        [StatisticsManager increaseCountForKey:FACEBOOK_COUNT];
+    }
+    else if ([sharer isKindOfClass:[SHKVkontakte class]]) {
+        [StatisticsManager increaseCountForKey:VK_COUNT];
+    }
     LOG(@"1");
 }
 
 - (void)sharerFinishedSending:(SHKSharer *)sharer
 {
+    if ([sharer isKindOfClass:[SHKMail class]]) {
+        [StatisticsManager increaseCountForKey:EMAIL_COUNT];
+    }
+    else if ([sharer isKindOfClass:[SHKFacebook class]]) {
+        [[FBSession activeSession] closeAndClearTokenInformation];
+    }
+    else if ([sharer isKindOfClass:[SHKVkontakte class]]) {
+        [SHKVkontakte logout];
+    }
+    
     LOG(@"2");
 }
 
 - (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
 {
-    LOG(@"3");
+    if ([sharer isKindOfClass:[SHKFacebook class]]) {
+        [[FBSession activeSession] closeAndClearTokenInformation];
+    }
+    else if ([sharer isKindOfClass:[SHKVkontakte class]]) {
+        [SHKVkontakte logout];
+    }
 }
 
 - (void)sharerCancelledSending:(SHKSharer *)sharer
 {
-    LOG(@"4");
+    if ([sharer isKindOfClass:[SHKFacebook class]]) {
+        [[FBSession activeSession] closeAndClearTokenInformation];
+    }
+    else if ([sharer isKindOfClass:[SHKVkontakte class]]) {
+        [SHKVkontakte logout];
+    }
 }
 
 
@@ -159,18 +234,17 @@
                 item.image = self.photo;
                 item.text = @"HAPPYBOX";
                 
-                [SHKFacebook shareItem:item];
+//                [SHKFacebook shareItem:item];
+                [shkFacebook loadItem:item];
+                [shkFacebook share];
                 
             } break;
                 
-            case FBSessionStateClosedLoginFailed: {
-                // prefer to keep decls near to their use
-                // unpack the error code and reason in order to compute cancel bool
-                NSString *errorCode = [[error userInfo] objectForKey:FBErrorLoginFailedOriginalErrorCode];
+            case FBSessionStateClosedLoginFailed:
+            {
                 NSString *errorReason = [[error userInfo] objectForKey:FBErrorLoginFailedReason];
 
-                
-                if(error.code == 2 && ![errorReason isEqualToString:@"com.facebook.sdk:UserLoginCancelled"]) {
+                if (error.code == 2 && ![errorReason isEqualToString:@"com.facebook.sdk:UserLoginCancelled"]) {
                     UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка"
                                                                            message:error.description
                                                                           delegate:nil
@@ -179,11 +253,10 @@
                     [errorMessage performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
                     errorMessage = nil;
                 }
-            }
-                break;
-                // presently extension, log-out and invalidation are being implemented in the Facebook class
+            } break;
+                
             default:
-                break; // so we do nothing in response to those state transitions
+                break;
         }
     }];
 }

@@ -121,6 +121,8 @@
 		10EDB7031927942B0044E041 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB6FE1927942B0044E041 /* UIImage+RoundedCorner.m */; };
 		10EDB7041927942B0044E041 /* UIImage+Scaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB7001927942B0044E041 /* UIImage+Scaling.m */; };
 		10EDB70919281EBE0044E041 /* BSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDB70819281EBE0044E041 /* BSImageCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BE1DDFB8193DEBE300B3E085 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1DDFB7193DEBE300B3E085 /* StatisticsViewController.m */; };
+		BE1DDFBC193DF70C00B3E085 /* StatisticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1DDFBB193DF70C00B3E085 /* StatisticsManager.m */; };
 		BED263A61938C38000325966 /* background_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A01938C38000325966 /* background_1.png */; };
 		BED263A71938C38000325966 /* background_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A11938C38000325966 /* background_1@2x.png */; };
 		BED263A81938C38000325966 /* background_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BED263A21938C38000325966 /* background_2.png */; };
@@ -467,6 +469,10 @@
 		10EDB7001927942B0044E041 /* UIImage+Scaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scaling.m"; sourceTree = "<group>"; };
 		10EDB70719281EBE0044E041 /* BSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSImageCache.h; sourceTree = "<group>"; };
 		10EDB70819281EBE0044E041 /* BSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSImageCache.m; sourceTree = "<group>"; };
+		BE1DDFB6193DEBE300B3E085 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsViewController.h; path = ViewControllers/StatisticsViewController/StatisticsViewController.h; sourceTree = "<group>"; };
+		BE1DDFB7193DEBE300B3E085 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsViewController.m; path = ViewControllers/StatisticsViewController/StatisticsViewController.m; sourceTree = "<group>"; };
+		BE1DDFBA193DF70C00B3E085 /* StatisticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsManager.h; path = StatisticsManager/StatisticsManager.h; sourceTree = "<group>"; };
+		BE1DDFBB193DF70C00B3E085 /* StatisticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsManager.m; path = StatisticsManager/StatisticsManager.m; sourceTree = "<group>"; };
 		BED263A01938C38000325966 /* background_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_1.png; sourceTree = "<group>"; };
 		BED263A11938C38000325966 /* background_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_1@2x.png"; sourceTree = "<group>"; };
 		BED263A21938C38000325966 /* background_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_2.png; sourceTree = "<group>"; };
@@ -726,6 +732,7 @@
 			children = (
 				108028EF191A983E006BBD9B /* PhotorollViewController */,
 				10638E251922903300C2181F /* ResultViewController */,
+				BE1DDFB5193DEBAF00B3E085 /* StatisticsViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -831,6 +838,7 @@
 				1080296F191A99D9006BBD9B /* FileManagerCoreMethods */,
 				108B64F31922810700CAC089 /* HFSManager */,
 				101CCCCF1935363E00827C9B /* SHKConfigurator */,
+				BE1DDFB9193DF6F400B3E085 /* StatisticsManager */,
 				10802986191A9A3D006BBD9B /* UserSettings */,
 			);
 			path = Core;
@@ -986,6 +994,24 @@
 				10EDB70819281EBE0044E041 /* BSImageCache.m */,
 			);
 			path = BS;
+			sourceTree = "<group>";
+		};
+		BE1DDFB5193DEBAF00B3E085 /* StatisticsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BE1DDFB6193DEBE300B3E085 /* StatisticsViewController.h */,
+				BE1DDFB7193DEBE300B3E085 /* StatisticsViewController.m */,
+			);
+			name = StatisticsViewController;
+			sourceTree = "<group>";
+		};
+		BE1DDFB9193DF6F400B3E085 /* StatisticsManager */ = {
+			isa = PBXGroup;
+			children = (
+				BE1DDFBA193DF70C00B3E085 /* StatisticsManager.h */,
+				BE1DDFBB193DF70C00B3E085 /* StatisticsManager.m */,
+			);
+			name = StatisticsManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1296,6 +1322,7 @@
 				10C1CFD7193BB1D000BABBDD /* AFURLRequestSerialization.m in Sources */,
 				1080280C19181B08006BBD9B /* AppDelegate.m in Sources */,
 				10C1CFE0193BB1D000BABBDD /* UIRefreshControl+AFNetworking.m in Sources */,
+				BE1DDFB8193DEBE300B3E085 /* StatisticsViewController.m in Sources */,
 				101CCCD21935363E00827C9B /* SHKConfigurator.m in Sources */,
 				10802975191A99D9006BBD9B /* FileManagerObject.m in Sources */,
 				10802984191A9A20006BBD9B /* UIImage+fixOrientation.m in Sources */,
@@ -1309,6 +1336,7 @@
 				10638E281922905600C2181F /* ResultViewController.m in Sources */,
 				10C1CFDC193BB1D000BABBDD /* UIAlertView+AFNetworking.m in Sources */,
 				108B64F61922812800CAC089 /* HFSManager.m in Sources */,
+				BE1DDFBC193DF70C00B3E085 /* StatisticsManager.m in Sources */,
 				10C1CFD4193BB1D000BABBDD /* AFNetworkReachabilityManager.m in Sources */,
 				1080280819181B08006BBD9B /* main.m in Sources */,
 				10C1CFE1193BB1D000BABBDD /* UIWebView+AFNetworking.m in Sources */,

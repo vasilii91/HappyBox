@@ -21,6 +21,8 @@
 #import "SDWebImageManager.h"
 #import "UIImage+Resize.h"
 #import "BSImageCache.h"
+#import "StatisticsViewController.h"
+
 
 @interface PhotorollViewController ()
 {
@@ -56,6 +58,10 @@
     [tableViewPhotoroll registerNib:[UINib nibWithNibName:[NSString stringWithFormat:@"PhotorollPreview_%@", postfix] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:PHOTOROLL_PREVIEW_CELL_ID];
     
     [tableViewPhotoroll setContentInset:UIEdgeInsetsMake(30, 0, 0, 0)];
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickOnStatisticsButton)];
+    tapGR.numberOfTapsRequired = 4;
+    buttonStatistics.gestureRecognizers = @[tapGR];
 }
 
 
@@ -69,6 +75,36 @@
 - (IBAction)clickOnSelectButton:(id)sender
 {
     [tableViewPhotoroll reloadData];
+}
+
+- (void)clickOnStatisticsButton
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"STATISTICS" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
+    alertView.delegate = self;
+    alertView.tag = 2;
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *tf = [alertView textFieldAtIndex:0];
+    tf.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [alertView show];
+}
+
+
+#pragma mark - @protocol UIAlertViewDelegate <NSObject>
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        NSString *enteredText = [[alertView textFieldAtIndex:0] text];
+        if ([enteredText isEqualToString:UDValue(SETTINGS_STATISTICS_PASSWORD)]) {
+            StatisticsViewController *statisticsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticsVC"];
+            [self.navigationController pushViewController:statisticsVC animated:YES];
+        }
+        else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect password" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] ;
+            [alertView show];
+        }
+    }
 }
 
 
