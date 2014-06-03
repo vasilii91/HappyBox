@@ -13,30 +13,30 @@
 @implementation SHKConfigurator
 
 - (NSString*)facebookAppId {
-	return @"136875329780383"; // OCSICO Test App
-//    return @"561368223932845";  // test app
+    return @"293314707496870";
+//	return @"136875329780383"; // OCSICO Test App
 }
 
 - (NSNumber*)forcePreIOS6FacebookPosting {
-	BOOL result = NO;
-    //if they have an account on their device, then use it, but don't force a device level login
-    if (NSClassFromString(@"SLComposeViewController")) {
-        result = ![SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook];
-    }
-    return [NSNumber numberWithBool:result];
+//	BOOL result = NO;
+//    //if they have an account on their device, then use it, but don't force a device level login
+//    if (NSClassFromString(@"SLComposeViewController")) {
+//        result = ![SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook];
+//    }
+//    return [NSNumber numberWithBool:result];
     
-//    return @YES;
+    return @YES;
 }
 
-//- (NSArray*)facebookWritePermissions {
-//    return [NSArray arrayWithObjects:@"publish_actions", @"publish_stream", @"offline_access", nil];
-//}
+- (NSArray*)facebookWritePermissions {
+    return [NSArray arrayWithObjects:@"publish_actions", @"publish_stream", @"offline_access", nil];
+}
 //- (NSArray*)facebookReadPermissions {
 //    return @[@"read_stream", @"basic_info", @"email", @"user_likes"];
 //}
 
 - (NSString*)vkontakteAppId {
-	return @"4384549";
+	return @"4396209";
 }
 
 

@@ -67,7 +67,7 @@
     NSInteger countOfActive = 0;
     NSInteger activeIndex = 0;
     
-    if (UDBool(SETTINGS_EMAIL_ENABLED)) {
+    if (UDBool(SETTINGS_PRINT_ENABLED)) {
         countOfActive++;
         buttonPrint.frame = [viewsForButtons[activeIndex] frame];
         buttonPrint.hidden = NO;
@@ -93,16 +93,23 @@
         activeIndex++;
     }
     
-    UIView *firstContainer = viewsForButtons[0];
-    UIView *lastContainer = viewsForButtons[countOfActive - 1];
-    
-    CGFloat containerHeight = ViewY(firstContainer) + ViewY(lastContainer) + ViewHeight(lastContainer);
-    viewContainer.frame = CGRectMake(ViewX(viewContainer),
-                                     ViewY(viewContainer),
-                                     ViewWidth(viewContainer),
-                                     containerHeight);
-    
-    viewContainer.center = viewBigContainer.center;
+    if (countOfActive > 0) {
+        UIView *firstContainer = viewsForButtons[0];
+        UIView *lastContainer = viewsForButtons[countOfActive - 1];
+        
+        CGFloat containerHeight = ViewY(firstContainer) + ViewY(lastContainer) + ViewHeight(lastContainer);
+        CGFloat containerWidth = ViewWidth(viewContainer);
+        if (countOfActive == 1) {
+            containerWidth = ViewWidth(firstContainer);
+        }
+        
+        viewContainer.frame = CGRectMake(ViewX(viewContainer),
+                                         ViewY(viewContainer),
+                                         containerWidth,
+                                         containerHeight);
+        
+        viewContainer.center = viewBigContainer.center;
+    }
 }
 
 
@@ -130,7 +137,8 @@
         case ButtonShareTypePrint:
         {
             [StatisticsManager increaseCountForKey:PRINT_COUNT];
-            [self printPhotoWithName:@"print.JPG"];
+            NSString *photoName = [self.photoURLString lastPathComponent];
+            [self printPhotoWithName:photoName];
         } break;
         case ButtonShareTypeVk:
         {
@@ -139,6 +147,8 @@
         } break;
         case ButtonShareTypeFacebook:
         {
+//            [shkFacebook loadItem:item];
+//            [shkFacebook share];
             [self openFacebookAuthentication];
         } break;
     }
@@ -193,14 +203,49 @@
     }
 }
 
+- (void)sharerShowBadCredentialsAlert:(SHKSharer *)sharer
+{
+    
+}
+
+- (void)sharerShowOtherAuthorizationErrorAlert:(SHKSharer *)sharer
+{
+    
+}
+
+- (void)hideActivityIndicatorForSharer:(SHKSharer *)sharer
+{
+    
+}
+
+- (void)displayActivity:(NSString *)activityDescription forSharer:(SHKSharer *)sharer
+{
+    
+}
+
+- (void)displayCompleted:(NSString *)completionText forSharer:(SHKSharer *)sharer
+{
+    
+}
+
+- (void)showProgress:(CGFloat)progress forSharer:(SHKSharer *)sharer
+{
+    
+}
+
 
 #pragma mark - Private methods
 
 - (void)printPhotoWithName:(NSString *)photoName
 {
+    NSString *filePath = [NSString stringWithFormat:@"C:\\test\\%@", photoName];
+    NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
+    NSString *printerName = @"Samsung ML-2010 Series";
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"filename" : photoName};
-    [manager POST:@"http://192.168.1.4:3000/printer" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *parameters = @{@"printer" : printerName,
+                                 @"filename" : filePath};
+    [manager POST:postMethod parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -220,13 +265,13 @@
             {
 //                NSMutableDictionary *params = [NSMutableDictionary new];
 //                [params setValue:@"#HAPPYBOX" forKey:@"message"];
-//                
+//
 //                NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(self.photo, 1.0)];
 //                [params setObject:imageData forKey:@"source"];
 //                
 //                [FBRequestConnection startWithGraphPath:@"/me/photos" parameters:params HTTPMethod:@"POST"
 //                                      completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-//                                          LOG(@"completed"); 
+//                                          LOG(@"completed");
 //                                      }];
                 
                 SHKItem *item = [SHKItem new];

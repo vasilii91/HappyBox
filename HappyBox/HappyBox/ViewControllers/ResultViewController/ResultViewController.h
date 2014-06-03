@@ -32,5 +32,6 @@ typedef NSInteger ButtonShareType;
 }
 
 @property (nonatomic, retain) UIImage *photo;
+@property (nonatomic, retain) NSString *photoURLString;
 
 @end
