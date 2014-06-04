@@ -23,6 +23,8 @@
     PhotorollToolbar *photorollToolBar;
     
     NSArray *listOfPhotos;
+    
+    __block NSInteger currentIndex;
 }
 
 @property (nonatomic, retain) NSArray *photoURLs;

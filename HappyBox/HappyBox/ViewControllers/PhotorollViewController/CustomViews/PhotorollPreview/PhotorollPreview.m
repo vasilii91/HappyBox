@@ -25,6 +25,7 @@
         containerView.hidden = NO;
         UIImageView *imageView = imageViewsImage[i];
         imageView.image = photos[i];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                        initWithTarget:self

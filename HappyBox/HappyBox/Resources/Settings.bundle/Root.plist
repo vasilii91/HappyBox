@@ -34,7 +34,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>test</string>
+			<string>test3</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -52,7 +52,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>C:\test</string>
+			<string>C:\test\</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>

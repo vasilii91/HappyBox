@@ -100,7 +100,7 @@
                                     <action selector="clickOnBackButton:" destination="d2z-aW-sct" eventType="touchUpInside" id="Atm-ak-0xD"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hZz-1h-gbp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person-icon.png" id="hZz-1h-gbp">
                                 <rect key="frame" x="308" y="119" width="400" height="602"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -344,6 +344,7 @@
         <image name="email_button_normal.png" width="130" height="130"/>
         <image name="fb_button_highlighted.png" width="130" height="130"/>
         <image name="fb_button_normal.png" width="130" height="130"/>
+        <image name="person-icon.png" width="200" height="200"/>
         <image name="photo_background.png" width="433" height="747"/>
         <image name="pring_button_highlighted.png" width="130" height="130"/>
         <image name="print_button_normal.png" width="130" height="130"/>

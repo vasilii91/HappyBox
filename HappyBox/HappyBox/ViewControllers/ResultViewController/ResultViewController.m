@@ -238,7 +238,7 @@
 
 - (void)printPhotoWithName:(NSString *)photoName
 {
-    NSString *filePath = [NSString stringWithFormat:@"%@\\%@", UDValue(SETTINGS_FULL_PATH_TO_THE_FOLDER), photoName];
+    NSString *filePath = [NSString stringWithFormat:@"%@\%@", UDValue(SETTINGS_FULL_PATH_TO_THE_FOLDER), photoName];
     NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
     NSString *printerName = UDValue(SETTINGS_PRINTER_NAME); // @"Samsung ML-2010 Series";
     
