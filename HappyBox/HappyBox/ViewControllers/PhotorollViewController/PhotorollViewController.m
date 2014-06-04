@@ -338,13 +338,15 @@
     }
     else {
         [SVProgressHUD dismiss];
-        
+
         [NSTimer scheduledTimerWithTimeInterval:10.0
                                          target:self
                                        selector:@selector(updateData)
                                        userInfo:nil
                                         repeats:YES];
     }
+    
+#warning Иногда новая фотка не добавляется, потому что currentIndex == self.photoURLs count
 }
 
 @end
