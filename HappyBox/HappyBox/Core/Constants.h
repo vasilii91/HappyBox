@@ -27,3 +27,5 @@
 #define SETTINGS_VK_ENABLED @"vk_enabled"
 #define SETTINGS_FACEBOOK_ENABLED @"facebook_enabled"
 #define SETTINGS_STATISTICS_PASSWORD @"statistics_password"
+#define SETTINGS_FULL_PATH_TO_THE_FOLDER @"full_path_to_the_folder"
+#define SETTINGS_PRINTER_NAME @"printer_name"

@@ -47,6 +47,42 @@
 			<string>PSTextFieldSpecifier</string>
 		</dict>
 		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>C:\test</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>full_path_to_the_folder</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Full path to the folder:</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>Samsung ML-2010 Series</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>printer_name</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Printer name:</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
 			<key>Title</key>
 			<string>SHARE SERVICES:</string>
 			<key>Type</key>
