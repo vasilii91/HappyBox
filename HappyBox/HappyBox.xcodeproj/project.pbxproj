@@ -95,6 +95,8 @@
 		10A24B361935200400EBBA2C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A24B351935200400EBBA2C /* CoreText.framework */; };
 		10A24B381935201500EBBA2C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A24B371935201500EBBA2C /* ImageIO.framework */; };
 		10A24B3A1935201B00EBBA2C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A24B391935201B00EBBA2C /* AddressBook.framework */; };
+		10B3B4751940F67C00D1162F /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B3B4721940F67C00D1162F /* LDProgressView.m */; };
+		10B3B4761940F67C00D1162F /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B3B4741940F67C00D1162F /* UIColor+RGBValues.m */; };
 		10C1CF961938E5C800BABBDD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10C1CF951938E5C800BABBDD /* Settings.bundle */; };
 		10C1CFD1193BB1D000BABBDD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C1CFAD193BB1D000BABBDD /* AFHTTPRequestOperation.m */; };
 		10C1CFD2193BB1D000BABBDD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C1CFAF193BB1D000BABBDD /* AFHTTPRequestOperationManager.m */; };
@@ -419,6 +421,10 @@
 		10A24B351935200400EBBA2C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		10A24B371935201500EBBA2C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		10A24B391935201B00EBBA2C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		10B3B4711940F67C00D1162F /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
+		10B3B4721940F67C00D1162F /* LDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDProgressView.m; sourceTree = "<group>"; };
+		10B3B4731940F67C00D1162F /* UIColor+RGBValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBValues.h"; sourceTree = "<group>"; };
+		10B3B4741940F67C00D1162F /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		10C1CF951938E5C800BABBDD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		10C1CFAC193BB1D000BABBDD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		10C1CFAD193BB1D000BABBDD /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -740,6 +746,7 @@
 		1080283219181F58006BBD9B /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				10B3B4701940F67C00D1162F /* LDProgressView */,
 				10C1CFAB193BB1D000BABBDD /* AFNetworking */,
 				101CCC0B193529A300827C9B /* ShareKit.xcodeproj */,
 				10EDB70619281EBE0044E041 /* BS */,
@@ -919,6 +926,17 @@
 				108B64F51922812800CAC089 /* HFSManager.m */,
 			);
 			name = HFSManager;
+			sourceTree = "<group>";
+		};
+		10B3B4701940F67C00D1162F /* LDProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				10B3B4711940F67C00D1162F /* LDProgressView.h */,
+				10B3B4721940F67C00D1162F /* LDProgressView.m */,
+				10B3B4731940F67C00D1162F /* UIColor+RGBValues.h */,
+				10B3B4741940F67C00D1162F /* UIColor+RGBValues.m */,
+			);
+			path = LDProgressView;
 			sourceTree = "<group>";
 		};
 		10C1CFAB193BB1D000BABBDD /* AFNetworking */ = {
@@ -1334,6 +1352,7 @@
 				10802902191A983E006BBD9B /* PhotorollNavBar.m in Sources */,
 				10802974191A99D9006BBD9B /* FileManagerCoreMethods.m in Sources */,
 				10638E281922905600C2181F /* ResultViewController.m in Sources */,
+				10B3B4751940F67C00D1162F /* LDProgressView.m in Sources */,
 				10C1CFDC193BB1D000BABBDD /* UIAlertView+AFNetworking.m in Sources */,
 				108B64F61922812800CAC089 /* HFSManager.m in Sources */,
 				BE1DDFBC193DF70C00B3E085 /* StatisticsManager.m in Sources */,
@@ -1358,6 +1377,7 @@
 				10C1CFD3193BB1D000BABBDD /* AFHTTPSessionManager.m in Sources */,
 				1080298F191A9A9E006BBD9B /* SVProgressHUD.m in Sources */,
 				1080296C191A9909006BBD9B /* CoreView.m in Sources */,
+				10B3B4761940F67C00D1162F /* UIColor+RGBValues.m in Sources */,
 				10C1CFD1193BB1D000BABBDD /* AFHTTPRequestOperation.m in Sources */,
 				10802908191A983E006BBD9B /* PhotorollToolbar.m in Sources */,
 				10C1CFD8193BB1D000BABBDD /* AFURLResponseSerialization.m in Sources */,

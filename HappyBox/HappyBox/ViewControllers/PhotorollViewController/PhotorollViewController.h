@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotorollPreview.h"
-
+#import "LDProgressView.h"
 
 @class PhotorollNavBar, PhotorollToolbar;
 
@@ -18,6 +18,8 @@
     __weak IBOutlet UITableView *tableViewPhotoroll;
     __weak IBOutlet UILabel *labelTitle;
     __weak IBOutlet UIButton *buttonStatistics;
+    __weak IBOutlet UIView *viewContainerForProgress;
+    __weak IBOutlet UILabel *labelProgress;
     
     PhotorollNavBar *photorollNavBar;
     PhotorollToolbar *photorollToolBar;
@@ -25,6 +27,7 @@
     NSArray *listOfPhotos;
     
     __block NSInteger currentIndex;
+    LDProgressView *progressView;
 }
 
 @property (nonatomic, retain) NSArray *photoURLs;

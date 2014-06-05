@@ -22,7 +22,7 @@
 #import "UIImage+Resize.h"
 #import "BSImageCache.h"
 #import "StatisticsViewController.h"
-
+#import "LDProgressView.h"
 
 @interface PhotorollViewController ()
 {
@@ -56,6 +56,8 @@
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickOnStatisticsButton)];
     tapGR.numberOfTapsRequired = 4;
     buttonStatistics.gestureRecognizers = @[tapGR];
+    
+    [self createProgressView];
 }
 
 
@@ -176,6 +178,30 @@
 }
 
 
+#pragma mark - Private methods (Views)
+
+- (void)createProgressView
+{
+    progressView = [[LDProgressView alloc]
+                    initWithFrame:CGRectMake(-1,
+                                             0,
+                                             ViewWidth(viewContainerForProgress) + 2,
+                                             ViewHeight(viewContainerForProgress) + 1)];
+    progressView.borderRadius = @0;
+    progressView.animate = @YES;
+    progressView.flat = @YES;
+    progressView.type = LDProgressSolid;
+    progressView.color = UIColorFromRGB(21.0, 150.0, 210.0);
+    progressView.background = viewContainerForProgress.backgroundColor;
+    progressView.showText = @YES;
+    
+    [viewContainerForProgress addSubview:progressView];
+    
+    progressView.hidden = YES;
+    labelProgress.hidden = YES;
+}
+
+
 #pragma mark - Private methods
 
 - (void)updateData
@@ -217,6 +243,7 @@
 //        [self downloadPhotos];
 //    }
     
+    currentIndex = 0;
     NSString *serverIP = [NSString stringWithFormat:@"%@/%@", UDValue(SETTINGS_SERVER_ADDRESS), UDValue(SETTINGS_FOLDER_NAME)]; // @"192.168.1.2/test";
     [HFSManager getAllPhotoLinksByServerURL:serverIP completionBlock:^(NSArray *photoURLs) {
         
@@ -302,13 +329,8 @@
                                 progress:^(NSInteger receivedSize, NSInteger expectedSize)
                  {
                      // progression tracking code
-                     
                      CGFloat progress = (float)receivedSize / (float)expectedSize;
                      LOG(@"%f", progress);
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         NSString *status = [NSString stringWithFormat:@"%d из %d", currentIndex + 1, [self.photoURLs count]];
-                         [SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeBlack];
-                     });
                      
                  } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
                      if (image)
@@ -320,8 +342,20 @@
                          
                          dispatch_async(dispatch_get_main_queue(), ^{
                              [tableViewPhotoroll reloadData];
-                             NSInteger row = (currentIndex / 5) + (currentIndex % 5 == 0 ? 0 : -1);
-                             [tableViewPhotoroll scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+                             NSInteger row = (currentIndex / 5);
+                             row = row < 0 ? 0 : row;
+                             if (row == [self rowCounts]) {
+                                 row = row - 1;
+                             }
+                             [tableViewPhotoroll scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                             
+                             CGFloat progress = (float)(currentIndex + 1) / (float)([self.photoURLs count]);
+                             NSString *status = [NSString stringWithFormat:@"%d из %d", currentIndex + 1, [self.photoURLs count]];
+                             progressView.hidden = NO;
+                             labelProgress.hidden = NO;
+                             labelProgress.text = status;
+                             progressView.progress = progress;
+                             
                              currentIndex++;
                              [self downloadPhotoStepByStep];
                          });
@@ -337,16 +371,24 @@
         }
     }
     else {
-        [SVProgressHUD dismiss];
-
-        [NSTimer scheduledTimerWithTimeInterval:10.0
-                                         target:self
-                                       selector:@selector(updateData)
-                                       userInfo:nil
-                                        repeats:YES];
+//        [SVProgressHUD dismiss];
+        viewContainerForProgress.hidden = YES;
+        progressView.hidden = YES;
+        labelProgress.hidden = YES;
+        
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [NSTimer scheduledTimerWithTimeInterval:10.0
+                                             target:self
+                                           selector:@selector(updateData)
+                                           userInfo:nil
+                                            repeats:YES];
+        });
     }
     
 #warning Иногда новая фотка не добавляется, потому что currentIndex == self.photoURLs count
+#warning Сделать сообщение "Ваще фото в пути"
+#warning Очистка кеша
 }
 
 @end
