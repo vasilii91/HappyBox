@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatisticsViewController : UIViewController
+@interface StatisticsViewController : UIViewController<UIAlertViewDelegate>
 {
     __weak IBOutlet UILabel *labelFacebookCount;
     __weak IBOutlet UILabel *labelVKCount;

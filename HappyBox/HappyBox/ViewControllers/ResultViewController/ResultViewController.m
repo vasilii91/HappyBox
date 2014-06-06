@@ -139,6 +139,8 @@
             [StatisticsManager increaseCountForKey:PRINT_COUNT];
             NSString *photoName = [self.photoURLString lastPathComponent];
             [self printPhotoWithName:photoName];
+            [self showAlertWithTitle:@"HAPPY BOX печатает фото"];
+            
         } break;
         case ButtonShareTypeVk:
         {
@@ -155,15 +157,25 @@
 }
 
 
+#pragma mark - @protocol UIAlertViewDelegate <NSObject>
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark - @protocol SHKSharerDelegate <NSObject>
 
 - (void)sharerStartedSending:(SHKSharer *)sharer
 {
     if ([sharer isKindOfClass:[SHKFacebook class]]) {
         [StatisticsManager increaseCountForKey:FACEBOOK_COUNT];
+        [self showAlertWithTitle:@"HAPPY BOX шарит фото в Facebook"];
     }
     else if ([sharer isKindOfClass:[SHKVkontakte class]]) {
         [StatisticsManager increaseCountForKey:VK_COUNT];
+        [self showAlertWithTitle:@"HAPPY BOX шарит фото в VK"];
     }
     LOG(@"1");
 }
@@ -172,6 +184,7 @@
 {
     if ([sharer isKindOfClass:[SHKMail class]]) {
         [StatisticsManager increaseCountForKey:EMAIL_COUNT];
+        [self showAlertWithTitle:@"HAPPY BOX отправляет фото на почтовый ящик"];
     }
     else if ([sharer isKindOfClass:[SHKFacebook class]]) {
         [[FBSession activeSession] closeAndClearTokenInformation];
@@ -235,6 +248,16 @@
 
 
 #pragma mark - Private methods
+
+- (void)showAlertWithTitle:(NSString *)title
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Спасибо!"
+                                                    message:title
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Продолжить", nil];
+    [alert show];
+}
 
 - (void)printPhotoWithName:(NSString *)photoName
 {

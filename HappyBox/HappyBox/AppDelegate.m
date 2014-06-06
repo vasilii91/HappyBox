@@ -29,11 +29,6 @@
     DefaultSHKConfigurator *configurator = [SHKConfigurator new];
     [SHKConfiguration sharedInstanceWithConfigurator:configurator];
     
-    [FileManagerCoreMethods createNewDirectoryWithPathComponents:@[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
-                                                                   DIRECTORY_NAME_FULLSIZE_PHOTOS]];
-    [FileManagerCoreMethods createNewDirectoryWithPathComponents:@[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
-                                                                   DIRECTORY_NAME_PREVIEW_PHOTOS]];
-    
     return YES;
 }
 

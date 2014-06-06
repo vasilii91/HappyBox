@@ -19,7 +19,7 @@ enum
 typedef NSInteger ButtonShareType;
 
 
-@interface ResultViewController : UIViewController<SHKSharerDelegate>
+@interface ResultViewController : UIViewController<SHKSharerDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UIImageView *imageViewPhoto;
     __weak IBOutlet UIView *viewBigContainer;

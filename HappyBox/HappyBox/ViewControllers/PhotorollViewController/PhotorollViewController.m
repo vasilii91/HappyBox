@@ -38,7 +38,6 @@
     [super viewDidLoad];
     
     [self initializeControls];
-    [self updateData];
 }
 
 - (void)initializeControls
@@ -58,6 +57,13 @@
     buttonStatistics.gestureRecognizers = @[tapGR];
     
     [self createProgressView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self updateData];
 }
 
 
@@ -199,6 +205,7 @@
     
     progressView.hidden = YES;
     labelProgress.hidden = YES;
+    viewContainerForProgress.hidden = YES;
 }
 
 
@@ -206,52 +213,56 @@
 
 - (void)updateData
 {
-//    NSArray *photoURLs = @[@"http://oboi20.ru/originals/original_1548_oboi_gusenica_otdyhaet_2500x1875.jpg",
-//                           @"http://wallbox.ru/wallpapers/dl/201420/731cbd08fd41f46b661d4fa5f77116b0.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201149/peyzazhi-7a44861adef4.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201149/erotika-0d34e007e8ad.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201149/multfilmy-744290db703c.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201149/zhivotnye-f5503e09afb1.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/0389456445cda09.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/2ea4f968e3181df.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/de9b89c2e08751b.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/4feebe4baac7440.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/42a86f9828cc164.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/0a148435dd842e1.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201408/4118b9d7e898cd8.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/716b059d97a7d60.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/bfcd5b08f9ca9d6.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/2faedf0319f79b4.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/f9f17a89207dbc0.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/ab417ffe2e46ea0.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/8f1ebf428547d34.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/704e9eb63fe6686.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/adc29250334ff91.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/862dc0b905f259c.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/b0b982cb3ad50a9.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/777a6be9d580a33.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/5330528d74fc073.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/3647290b2393dc8.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/6574b5e9ca3ef39.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/bdd1332a95ae3eb.jpg",
-//                           @"http://wallbox.ru/wallpapers/main/201402/cc462fdbcbd891c.jpg",
-//                           ];
-//    
-//    if ([self.photoURLs count] != [photoURLs count]) {
-//        
-//        self.photoURLs = photoURLs;
-//        [self downloadPhotos];
-//    }
+    [FileManagerCoreMethods createNewDirectoryWithPathComponents:@[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
+                                                                   DIRECTORY_NAME_FULLSIZE_PHOTOS]];
+    [FileManagerCoreMethods createNewDirectoryWithPathComponents:@[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
+                                                                   DIRECTORY_NAME_PREVIEW_PHOTOS]];
     
     currentIndex = 0;
-    NSString *serverIP = [NSString stringWithFormat:@"%@/%@", UDValue(SETTINGS_SERVER_ADDRESS), UDValue(SETTINGS_FOLDER_NAME)]; // @"192.168.1.2/test";
-    [HFSManager getAllPhotoLinksByServerURL:serverIP completionBlock:^(NSArray *photoURLs) {
+    NSArray *photoURLs = @[@"http://oboi20.ru/originals/original_1548_oboi_gusenica_otdyhaet_2500x1875.jpg",
+                           @"http://wallbox.ru/wallpapers/dl/201420/731cbd08fd41f46b661d4fa5f77116b0.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201149/peyzazhi-7a44861adef4.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201149/erotika-0d34e007e8ad.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201149/multfilmy-744290db703c.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201149/zhivotnye-f5503e09afb1.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/0389456445cda09.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/2ea4f968e3181df.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/de9b89c2e08751b.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/4feebe4baac7440.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/42a86f9828cc164.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/0a148435dd842e1.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201408/4118b9d7e898cd8.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/716b059d97a7d60.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/bfcd5b08f9ca9d6.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/2faedf0319f79b4.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/f9f17a89207dbc0.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/ab417ffe2e46ea0.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/8f1ebf428547d34.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/704e9eb63fe6686.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/adc29250334ff91.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/862dc0b905f259c.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/b0b982cb3ad50a9.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/777a6be9d580a33.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/5330528d74fc073.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/3647290b2393dc8.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/6574b5e9ca3ef39.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/bdd1332a95ae3eb.jpg",
+                           @"http://wallbox.ru/wallpapers/main/201402/cc462fdbcbd891c.jpg",
+                           ];
+    
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.photoURLs = photoURLs;
-            [self downloadPhotoStepByStep];
-        });
-    }];
+    self.photoURLs = photoURLs;
+    [self downloadPhotoStepByStep];
+    
+//    currentIndex = 0;
+//    NSString *serverIP = [NSString stringWithFormat:@"%@/%@", UDValue(SETTINGS_SERVER_ADDRESS), UDValue(SETTINGS_FOLDER_NAME)]; // @"192.168.1.2/test";
+//    [HFSManager getAllPhotoLinksByServerURL:serverIP completionBlock:^(NSArray *photoURLs) {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.photoURLs = photoURLs;
+//            [self downloadPhotoStepByStep];
+//        });
+//    }];
 }
 
 //- (void)downloadPhotos
@@ -349,12 +360,14 @@
                              }
                              [tableViewPhotoroll scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                              
-                             CGFloat progress = (float)(currentIndex + 1) / (float)([self.photoURLs count]);
+//                             CGFloat progress = (float)(currentIndex + 1) / (float)([self.photoURLs count]);
+//                             progressView.hidden = NO;
+//                             progressView.progress = progress;
+                             
+                             viewContainerForProgress.hidden = NO;
                              NSString *status = [NSString stringWithFormat:@"%d из %d", currentIndex + 1, [self.photoURLs count]];
-                             progressView.hidden = NO;
                              labelProgress.hidden = NO;
                              labelProgress.text = status;
-                             progressView.progress = progress;
                              
                              currentIndex++;
                              [self downloadPhotoStepByStep];
@@ -372,8 +385,9 @@
     }
     else {
 //        [SVProgressHUD dismiss];
+//        viewContainerForProgress.hidden = YES;
+//        progressView.hidden = YES;
         viewContainerForProgress.hidden = YES;
-        progressView.hidden = YES;
         labelProgress.hidden = YES;
         
         static dispatch_once_t onceToken;
