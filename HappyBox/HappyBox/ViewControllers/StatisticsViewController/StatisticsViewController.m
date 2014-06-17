@@ -10,6 +10,8 @@
 #import "StatisticsManager.h"
 #import "FileManagerCoreMethods.h"
 #import "BSImageCache.h"
+#import "SDWebImageManager.h"
+
 
 @implementation StatisticsViewController
 
@@ -59,6 +61,8 @@
             [FileManagerCoreMethods deleteDirectoryWithPathComponents:photoPathComponents];
             [FileManagerCoreMethods deleteDirectoryWithPathComponents:photoPreviewPathComponents];
             [[BSImageCache sharedInstance] cleanCacheWithType:CacheTypeIsRAM];
+            
+            [[SDWebImageManager sharedManager].imageCache clearMemory];
         }
     }
 }

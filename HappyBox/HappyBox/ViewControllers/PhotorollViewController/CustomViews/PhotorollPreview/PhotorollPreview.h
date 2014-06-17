@@ -13,11 +13,12 @@
 @protocol PhotorollPreviewDelegate <NSObject>
 
 - (void)userTapOnPhotoWithIndex:(NSInteger)index;
+- (void)userDoubleTapOnPhotoWithIndex:(NSInteger)index;
 
 @end
 
 
-@interface PhotorollPreview : UITableViewCell
+@interface PhotorollPreview : UITableViewCell<UIGestureRecognizerDelegate>
 {
     IBOutletCollection(UIView) NSArray *containerViews;
     IBOutletCollection(UIImageView) NSArray *imageViewsImage;

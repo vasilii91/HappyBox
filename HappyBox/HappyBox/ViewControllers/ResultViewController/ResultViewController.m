@@ -262,7 +262,8 @@
 - (void)printPhotoWithName:(NSString *)photoName
 {
     NSString *filePath = [NSString stringWithFormat:@"%@\%@", UDValue(SETTINGS_FULL_PATH_TO_THE_FOLDER), photoName];
-    NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
+    NSString *postMethod = @"http://192.168.0.101:3000/printer";
+//    NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
     NSString *printerName = UDValue(SETTINGS_PRINTER_NAME); // @"Samsung ML-2010 Series";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -278,10 +279,16 @@
 
 - (void)openFacebookAuthentication
 {
-    [FBSession setActiveSession:[[FBSession alloc]
-                                 initWithPermissions:@[@"user_photos"]]];
+//    [FBSession setActiveSession:[[FBSession alloc]
+//                                 initWithPermissions:@[@"user_photos", @"publish_actions"]]];
     
-    [[FBSession activeSession] openWithBehavior:FBSessionLoginBehaviorForcingWebView completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+    FBSession *fbsession = [[FBSession alloc] initWithAppID:@"244413002426459"
+                                              permissions:@[@"user_photos", @"publish_actions"]
+                                          urlSchemeSuffix:@""
+                                       tokenCacheStrategy:nil];
+    [FBSession setActiveSession:fbsession];
+    
+    [fbsession openWithBehavior:FBSessionLoginBehaviorForcingWebView completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         
         switch (status) {
             case FBSessionStateOpen:

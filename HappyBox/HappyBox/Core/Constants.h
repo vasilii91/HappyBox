@@ -29,3 +29,4 @@
 #define SETTINGS_STATISTICS_PASSWORD @"statistics_password"
 #define SETTINGS_FULL_PATH_TO_THE_FOLDER @"full_path_to_the_folder"
 #define SETTINGS_PRINTER_NAME @"printer_name"
+#define SETTINGS_PORT @"port"

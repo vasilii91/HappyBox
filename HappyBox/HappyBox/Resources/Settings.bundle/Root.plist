@@ -16,7 +16,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>192.168.1.4</string>
+			<string>192.168.137.1</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -34,7 +34,25 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>test3</string>
+			<string>80</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>port</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+			<key>Title</key>
+			<string>Port:</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>test/prints</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>

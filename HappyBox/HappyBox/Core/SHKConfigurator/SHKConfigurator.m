@@ -13,7 +13,7 @@
 @implementation SHKConfigurator
 
 - (NSString*)facebookAppId {
-    return @"293314707496870";
+    return @"244413002426459";
 //	return @"136875329780383"; // OCSICO Test App
 }
 

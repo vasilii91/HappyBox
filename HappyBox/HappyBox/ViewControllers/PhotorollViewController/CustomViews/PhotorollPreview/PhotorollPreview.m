@@ -27,10 +27,19 @@
         imageView.image = photos[i];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]
                                        initWithTarget:self
                                        action:@selector(tapOnContainerView:)];
-        [containerView addGestureRecognizer:tap];
+        tap1.numberOfTapsRequired = 1;
+        
+        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(doubleTapOnContainerView:)];
+        tap2.numberOfTapsRequired = 2;
+        
+        [tap1 requireGestureRecognizerToFail:tap2];
+        
+        containerView.gestureRecognizers = @[tap1, tap2];
     }
 }
 
@@ -39,12 +48,24 @@
 
 - (void)tapOnContainerView:(UITapGestureRecognizer *)gr
 {
-    UIView *containerView = gr.view;
-    NSInteger containerTag = containerView.tag;
-    NSInteger index = containerTag + self.row * 5;
+    NSInteger index = gr.view.tag + self.row * 5;
     LOG(@"%d", index);
     
     [self.delegate userTapOnPhotoWithIndex:index];
+}
+
+- (void)doubleTapOnContainerView:(UITapGestureRecognizer *)gr
+{
+    NSInteger index = gr.view.tag + self.row * 5;
+    [self.delegate userDoubleTapOnPhotoWithIndex:index];
+}
+
+
+#pragma mark - @protocol UIGestureRecognizerDelegate <NSObject>
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 @end

@@ -18,6 +18,7 @@
     __weak IBOutlet UITableView *tableViewPhotoroll;
     __weak IBOutlet UILabel *labelTitle;
     __weak IBOutlet UIButton *buttonStatistics;
+    __weak IBOutlet UIButton *buttonUpdateData;
     __weak IBOutlet UIView *viewContainerForProgress;
     __weak IBOutlet UILabel *labelProgress;
     

@@ -32,7 +32,7 @@
         //Something went wrong
         else {
             // ToDO: Sort out any errors
-            
+            LOGAlert(@"%@", error.description);
         }
     }];
 }
