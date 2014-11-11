@@ -14,7 +14,10 @@
     __weak IBOutlet UILabel *labelVKCount;
     __weak IBOutlet UILabel *labelEmailCount;
     __weak IBOutlet UILabel *labelPrintCount;
+    __weak IBOutlet UILabel *labelCountOfPhotos;
     
 }
+
+@property (nonatomic, assign) NSInteger countOfPhotos;
 
 @end

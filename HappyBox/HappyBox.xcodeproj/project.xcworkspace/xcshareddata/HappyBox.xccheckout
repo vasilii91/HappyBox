@@ -10,31 +10,29 @@
 	<string>HappyBox</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C3D370DF-4F8B-4107-A590-0176B6503E4D</key>
+		<key>3AF27F4B6C00333E92F671E600710216FAFD41AC</key>
 		<string>https://github.com/vasilii91/HappyBox.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HappyBox/HappyBox.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AAC11DD3-64B5-4E89-948B-9138F12C0AEE</key>
-		<string>../../HappyBox/libs/ShareKit</string>
-		<key>C3D370DF-4F8B-4107-A590-0176B6503E4D</key>
+		<key>3AF27F4B6C00333E92F671E600710216FAFD41AC</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/vasilii91/HappyBox.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C3D370DF-4F8B-4107-A590-0176B6503E4D</string>
+	<string>3AF27F4B6C00333E92F671E600710216FAFD41AC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C3D370DF-4F8B-4107-A590-0176B6503E4D</string>
+			<string>3AF27F4B6C00333E92F671E600710216FAFD41AC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HappyBox</string>
 		</dict>

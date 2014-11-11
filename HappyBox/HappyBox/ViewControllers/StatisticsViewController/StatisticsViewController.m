@@ -76,6 +76,7 @@
     labelFacebookCount.text = [NSString stringWithFormat:@"%d", [StatisticsManager countForKey:FACEBOOK_COUNT]];
     labelPrintCount.text = [NSString stringWithFormat:@"%d", [StatisticsManager countForKey:PRINT_COUNT]];
     labelEmailCount.text = [NSString stringWithFormat:@"%d", [StatisticsManager countForKey:EMAIL_COUNT]];
+    labelCountOfPhotos.text = [NSString stringWithFormat:@"%d", self.countOfPhotos];
 }
 
 - (void)showAlertWithTitle:(NSString *)title tag:(NSInteger)buttonTag

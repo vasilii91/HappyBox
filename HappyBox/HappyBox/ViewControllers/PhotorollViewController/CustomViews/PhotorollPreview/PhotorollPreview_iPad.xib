@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -24,31 +24,28 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <view tag="1" contentMode="scaleToFill" id="5Sr-0g-67G">
                         <rect key="frame" x="235" y="14" width="173" height="262"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person-icon.png" id="eTT-Pc-lZc">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person-icon.png" id="eTT-Pc-lZc">
                                 <rect key="frame" x="0.0" y="0.0" width="173" height="262"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <view tag="2" contentMode="scaleToFill" id="h0F-Ue-272">
                         <rect key="frame" x="426" y="14" width="173" height="262"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person-icon.png" id="mzV-u3-Wk9">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person-icon.png" id="mzV-u3-Wk9">
                                 <rect key="frame" x="0.0" y="0.0" width="173" height="262"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <view tag="3" contentMode="scaleToFill" id="aSQ-La-ads">
                         <rect key="frame" x="619" y="14" width="173" height="262"/>
@@ -60,7 +57,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <view tag="4" contentMode="scaleToFill" id="C5J-52-LHm">
                         <rect key="frame" x="812" y="14" width="173" height="262"/>
@@ -72,7 +68,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,9 +85,15 @@
                 <outletCollection property="imageViewsImage" destination="Yu5-hO-zYr" id="AYu-hG-sF2"/>
                 <outletCollection property="imageViewsImage" destination="H8w-q2-h65" id="ZlH-qz-zFJ"/>
             </connections>
+            <point key="canvasLocation" x="213" y="232.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="person-icon.png" width="200" height="200"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

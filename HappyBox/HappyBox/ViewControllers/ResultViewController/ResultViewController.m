@@ -62,6 +62,15 @@
     [self buildButtons];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[FBSession activeSession] closeAndClearTokenInformation];
+    [SHKVkontakte logout];
+}
+
+
 - (void)buildButtons
 {
     NSInteger countOfActive = 0;
@@ -262,8 +271,8 @@
 - (void)printPhotoWithName:(NSString *)photoName
 {
     NSString *filePath = [NSString stringWithFormat:@"%@\%@", UDValue(SETTINGS_FULL_PATH_TO_THE_FOLDER), photoName];
-    NSString *postMethod = @"http://192.168.0.101:3000/printer";
-//    NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
+//    NSString *postMethod = @"http://192.168.0.101:3000/printer";
+    NSString *postMethod = [NSString stringWithFormat:@"http://%@:3000/printer", UDValue(SETTINGS_SERVER_ADDRESS)];
     NSString *printerName = UDValue(SETTINGS_PRINTER_NAME); // @"Samsung ML-2010 Series";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
