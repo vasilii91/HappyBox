@@ -248,37 +248,37 @@
 
 // V_2
     
-    currentIndex = 0;
-    NSArray *photoURLs = @[@"http://oboi20.ru/originals/original_1548_oboi_gusenica_otdyhaet_2500x1875.jpg",
-                           @"http://wallbox.ru/wallpapers/dl/201420/731cbd08fd41f46b661d4fa5f77116b0.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201149/peyzazhi-7a44861adef4.jpg",
-                           @"http://uhdoityourself.files.wordpress.com/2012/11/nicole-meyer-ann-summers-1-768x1024.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201149/multfilmy-744290db703c.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201149/zhivotnye-f5503e09afb1.jpg",
-                           @"http://uhdoityourself.files.wordpress.com/2012/11/nicole-meyer-ann-summers-4-768x1024.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/bfcd5b08f9ca9d6.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/ab417ffe2e46ea0.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/3647290b2393dc8.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/6574b5e9ca3ef39.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/bdd1332a95ae3eb.jpg",
-                           @"http://wallbox.ru/wallpapers/main/201402/cc462fdbcbd891c.jpg",
-                           ];
-    
-        
-    self.photoURLs = photoURLs;
-    [self downloadPhotoStepByStep];
+//    currentIndex = 0;
+//    NSArray *photoURLs = @[@"http://oboi20.ru/originals/original_1548_oboi_gusenica_otdyhaet_2500x1875.jpg",
+//                           @"http://wallbox.ru/wallpapers/dl/201420/731cbd08fd41f46b661d4fa5f77116b0.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201149/peyzazhi-7a44861adef4.jpg",
+//                           @"http://uhdoityourself.files.wordpress.com/2012/11/nicole-meyer-ann-summers-1-768x1024.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201149/multfilmy-744290db703c.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201149/zhivotnye-f5503e09afb1.jpg",
+//                           @"http://uhdoityourself.files.wordpress.com/2012/11/nicole-meyer-ann-summers-4-768x1024.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/bfcd5b08f9ca9d6.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/ab417ffe2e46ea0.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/3647290b2393dc8.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/6574b5e9ca3ef39.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/bdd1332a95ae3eb.jpg",
+//                           @"http://wallbox.ru/wallpapers/main/201402/cc462fdbcbd891c.jpg",
+//                           ];
+//    
+//        
+//    self.photoURLs = photoURLs;
+//    [self downloadPhotoStepByStep];
   
 // PRODUCTION
     
-//    currentIndex = 0;
-//    NSString *serverIP = [NSString stringWithFormat:@"%@:%@/%@", UDValue(SETTINGS_SERVER_ADDRESS), UDValue(SETTINGS_PORT), UDValue(SETTINGS_FOLDER_NAME)]; // @"192.168.1.2/test";
-//    [HFSManager getAllPhotoLinksByServerURL:serverIP completionBlock:^(NSArray *photoURLs) {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.photoURLs = photoURLs;
-//            [self downloadPhotoStepByStep];
-//        });
-//    }];
+    currentIndex = 0;
+    NSString *serverIP = [NSString stringWithFormat:@"%@:%@/%@", UDValue(SETTINGS_SERVER_ADDRESS), UDValue(SETTINGS_PORT), UDValue(SETTINGS_FOLDER_NAME)]; // @"192.168.1.2/test";
+    [HFSManager getAllPhotoLinksByServerURL:serverIP completionBlock:^(NSArray *photoURLs) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photoURLs = photoURLs;
+            [self downloadPhotoStepByStep];
+        });
+    }];
 }
 
 - (void)downloadPhotoStepByStep

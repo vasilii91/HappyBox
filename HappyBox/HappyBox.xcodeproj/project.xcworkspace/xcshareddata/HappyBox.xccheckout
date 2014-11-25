@@ -14,7 +14,7 @@
 		<string>https://github.com/vasilii91/HappyBox.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HappyBox/HappyBox.xcodeproj/project.xcworkspace</string>
+	<string>HappyBox/HappyBox.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3AF27F4B6C00333E92F671E600710216FAFD41AC</key>
