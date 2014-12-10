@@ -28,6 +28,7 @@
     NSArray *listOfPhotos;
     
     __block NSInteger currentIndex;
+    
     LDProgressView *progressView;
 }
 

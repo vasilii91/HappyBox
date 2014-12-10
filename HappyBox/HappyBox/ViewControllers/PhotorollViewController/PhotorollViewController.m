@@ -284,9 +284,7 @@
 - (void)downloadPhotoStepByStep
 {
     if (currentIndex < [self.photoURLs count]) {
-        
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        
+
         NSString *photoName = self.photoURLs[currentIndex];
         photoName = [FileManagerCoreMethods escapeString:photoName];
         
@@ -299,43 +297,36 @@
         
         if ([FileManagerCoreMethods isExistFileByPathComponents:photoPathComponents] == NO) {
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+            dispatch_async(queue, ^(void) {
                 
-                [manager downloadWithURL:self.photoURLs[currentIndex]
-                                 options:0
-                                progress:^(NSInteger receivedSize, NSInteger expectedSize)
-                 {
-                     // progression tracking code
-                     CGFloat progress = (float)receivedSize / (float)expectedSize;
-                     LOG(@"%f", progress);
-                     
-                 } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-                     if (image)
-                     {
-                         UIImage *imageResized = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(250, 250) interpolationQuality:kCGInterpolationDefault];
-                         [FileManagerCoreMethods addItem:image toDirectoryWithPathComponents:photoPathComponents];
-                         [FileManagerCoreMethods addItem:imageResized toDirectoryWithPathComponents:photoPreviewPathComponents];
-                         [[BSImageCache sharedInstance] cacheImage:imageResized withId:photoName cacheType:CacheTypeIsRAM];
-                         
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                             [tableViewPhotoroll reloadData];
-//                             NSInteger row = (currentIndex / 5);
-//                             row = row < 0 ? 0 : row;
-//                             if (row == [self rowCounts]) {
-//                                 row = row - 1;
-//                             }
-//                             [tableViewPhotoroll scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-                             
-                             viewContainerForProgress.hidden = NO;
-                             NSString *status = [NSString stringWithFormat:@"%d из %d", currentIndex + 1, [self.photoURLs count]];
-                             labelProgress.hidden = NO;
-                             labelProgress.text = status;
-                             
-                             currentIndex++;
-                             [self downloadPhotoStepByStep];
-                         });
-                     }
-                 }];
+                NSURL *url = [NSURL URLWithString:self.photoURLs[currentIndex]];
+                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                UIImage *image = [[UIImage alloc] initWithData:imageData];
+                if (image) {
+                    
+                    UIImage *imageResized = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(250, 250) interpolationQuality:kCGInterpolationDefault];
+                    [FileManagerCoreMethods addItem:image toDirectoryWithPathComponents:photoPathComponents];
+                    [FileManagerCoreMethods addItem:imageResized toDirectoryWithPathComponents:photoPreviewPathComponents];
+                    [[BSImageCache sharedInstance] cacheImage:imageResized withId:photoName cacheType:CacheTypeIsRAM];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [tableViewPhotoroll reloadData];
+                        
+                        viewContainerForProgress.hidden = NO;
+                        NSString *status = [NSString stringWithFormat:@"%ld из %lu", (long)currentIndex, (unsigned long)[self.photoURLs count]];
+                        labelProgress.hidden = NO;
+                        labelProgress.text = status;
+                        
+                        if (currentIndex >= [self.photoURLs count]) {
+                            labelProgress.hidden = YES;
+                            viewContainerForProgress.hidden = YES;
+                        }
+                    });
+                    
+                    currentIndex++;
+                    [self downloadPhotoStepByStep];
+                }
             });
         }
         else {
@@ -362,10 +353,6 @@
 
 - (void)downloadPhotoByIndex:(NSInteger)photoIndex
 {
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager.imageCache clearMemory];
-    [manager.imageCache clearDisk];
-    
     NSString *photoName = self.photoURLs[photoIndex];
     photoName = [FileManagerCoreMethods escapeString:photoName];
     
@@ -375,29 +362,35 @@
     NSArray *photoPreviewPathComponents = @[DIRECTORY_NAME_MAIN_HAPPYBOX_PHOTOS,
                                             DIRECTORY_NAME_PREVIEW_PHOTOS,
                                             photoName];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(queue, ^(void) {
         
-        [manager downloadWithURL:self.photoURLs[photoIndex]
-                         options:SDWebImageRefreshCached
-                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
-         {
-             CGFloat progress = (float)receivedSize / (float)expectedSize;
-             LOG(@"%f", progress);
-             
-         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-             if (image)
-             {
-                 UIImage *imageResized = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(250, 250) interpolationQuality:kCGInterpolationDefault];
-                 [FileManagerCoreMethods addItem:image toDirectoryWithPathComponents:photoPathComponents];
-                 [FileManagerCoreMethods addItem:imageResized toDirectoryWithPathComponents:photoPreviewPathComponents];
-                 [[BSImageCache sharedInstance] cacheImage:imageResized withId:photoName cacheType:CacheTypeIsRAM];
-                 
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [tableViewPhotoroll reloadData];
-                 });
-             }
-         }];
+        NSURL *url = [NSURL URLWithString:self.photoURLs[photoIndex]];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [[UIImage alloc] initWithData:imageData];
+        
+        if (image) {
+            UIImage *imageResized = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(250, 250) interpolationQuality:kCGInterpolationDefault];
+            [FileManagerCoreMethods addItem:image toDirectoryWithPathComponents:photoPathComponents];
+            [FileManagerCoreMethods addItem:imageResized toDirectoryWithPathComponents:photoPreviewPathComponents];
+            [[BSImageCache sharedInstance] cacheImage:imageResized withId:photoName cacheType:CacheTypeIsRAM];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [tableViewPhotoroll reloadData];
+            });
+        }
+    });
+}
+
+- (void)changeProgressStatus
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        viewContainerForProgress.hidden = NO;
+        NSString *status = [NSString stringWithFormat:@"%ld из %lu", currentIndex + 1, (unsigned long)[self.photoURLs count]];
+        labelProgress.hidden = NO;
+        labelProgress.text = status;
     });
 }
 
